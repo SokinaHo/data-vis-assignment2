@@ -14,7 +14,7 @@
         "groupby": ["property_type"]
       }
     ],
-    "mark": {"type": "arc", "innerRadius": 70}, // Use "arc" mark with an inner radius for a donut chart
+    "mark": {"type": "arc", "innerRadius": 70}, //Use "arc" mark with an inner radius for a donut chart
     "encoding": {
       "theta": {"field": "count", "type": "quantitative"},
       "color": {"field": "property_type", "type": "nominal"}
