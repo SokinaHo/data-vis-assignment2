@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Most revenue earned of the item category"},
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/SokinaHo/data-vis-assignment2/main/shopping_trends_updated.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "sum", "field": "Purchase Amount (USD)", "as": "Total Amount"}
+      ],
+      "groupby": ["Category"]
+    }
+  ],
+  "mark": "arc",
+  "encoding": {
+    "theta": {"field": "Total Amount", "type": "quantitative", "title": "Total Amount (USD)"},
+    "color": {"field": "Category", "type": "nominal"},
+    "tooltip": [
+      {"field": "Category", "type": "nominal", "title": "Category"},
+      {"field": "Total Amount", "type": "quantitative", "title": "Total Amount (USD)"}
+    ]
+  }
+}

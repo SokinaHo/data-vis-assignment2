@@ -1,23 +1,27 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Australian Housing Data Visualization"},
-    "width": 300,
-    "height": 300,
-    "data": {
-      "url": "https://raw.githubusercontent.com/SokinaHo/data-vis-assignment2/main/RealEstateAU_1000_Samples.csv"
-    },
-   "transform": [
-      {
-        "aggregate": [
-          {"op": "count", "field": "property_type", "as": "count"}
-        ],
-        "groupby": ["property_type"]
-      }
-    ],
-    "mark": {"type": "arc", "innerRadius": 70}, //Use "arc" mark with an inner radius for a donut chart
-    "encoding": {
-      "theta": {"field": "count", "type": "quantitative"},
-      "color": {"field": "property_type", "type": "nominal"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Seasonal Trends in Purchase Amount"},
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/SokinaHo/data-vis-assignment2/main/shopping_trends_updated.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "count", "field": "Purchase Amount (USD)", "as": "Total Purchase Amount"}
+      ],
+      "groupby": ["Season"]
     }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Season", "type": "nominal", "title": "Season"},
+    "y": {"field": "Total Purchase Amount", "type": "quantitative", "title": "Total Purchase Amount"},
+    "color": {"field": "Season", "type": "nominal"},
+    "tooltip": [
+      {"field": "Season", "type": "nominal", "title": "Season"},
+      {"field": "Total Purchase Amount", "type": "quantitative", "title": "Total Purchase Amount"}
+    ]
   }
-  
+}

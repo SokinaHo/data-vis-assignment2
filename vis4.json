@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "total item purchased for each category by gender "},
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/SokinaHo/data-vis-assignment2/main/shopping_trends_updated.csv"
+  },
+  "facet": {"row": {"field": "Gender"}},
+  "spec": {
+    "width": 300,
+    "height": 200,
+    "mark": "arc",
+    "encoding": {
+      "theta": {"field": "Total Purchase Amount", "type": "quantitative", "title": "Total Purchase Amount"},
+      "color": {"field": "Category", "type": "nominal", "title": "Category"},
+      "tooltip": [
+        {"field": "Category", "type": "nominal", "title": "Category"},
+        {"field": "Total Purchase Amount", "type": "quantitative", "title": "Total Purchase Amount"}
+      ]
+    },
+    "transform": [
+      {
+        "aggregate": [
+          {"op": "count", "field": "Item Purchased", "as": "Total Purchase Amount"}
+        ],
+        "groupby": ["Gender", "Category"]
+      }
+    ]
+  }
+
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Embedding Vega-Lite</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center align text within the body */
+        body {
+            text-align: center;
+        }
+
+        /* Add margin and padding to the visualization divs */
+        .vis-div {
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<!-- Bootstrap container to center content -->
+<div class="container">
+    <h1 style="font-family: 'Cabin', sans-serif;">Clothing Trends in USA</h1>
+
+    <!-- Bootstrap row to display the visualization divs in rows -->
+    <div class="row">
+        <div class="col-12 col-md-4 vis-div">
+            <h2 style="font-family: 'Quicksand', sans-serif;">Season trends</h2>
+            <div id="vis1"></div>
+            <h4 style="font-family: 'Quicksand', sans-serif;">This graph shows the total amount of items that has been purchased across all 4 seasons</h4>
+            <h4 style="font-family: 'Quicksand', sans-serif;">As shown above the data showed that across all seasons, people are shopping the same amount of clothing but as seen in the visual Spring appears to have the most amount of shopping out of the rest of the season.</h4>
+        </div>
+        <div class="col-12 col-md-4 vis-div">
+            <h2 style="font-family: 'Quicksand', sans-serif;">Popular item of the season</h2>
+            <div id="vis2"></div>
+            <h4 style="font-family: 'Quicksand', sans-serif;">Here we have another bar chart that shows what is the most popular item that people are buying. We can see that item are getting bought at a similar amount but the item that are sold the most are pants blouse and jewelry up to 171 purchases.</h4>
+        </div>
+        <div class="col-12 col-md-4 vis-div">
+            <h2 style="font-family: 'Quicksand', sans-serif;">Most revenue earned by category</h2>
+            <div id="vis3"></div>
+            <h4 style="font-family: 'Quicksand', sans-serif;">Here is a pie chart showing the total revenue earned from these categories which consist of Accessories, Clothing, Footwear, Outerwear. By creating a pie chart we are able to learn that clothing is the category that earned the most revenue followed by accessories.</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 vis-div">
+            <h2 style="font-family: 'Quicksand', sans-serif;"> Gender preference trend</h2>
+            <div id="vis4"></div>
+            <h4 style="font-family: 'Quicksand', sans-serif;">Here is also another pie chart separating the above chart in order to find out more what are male and female preferences when it comes to shopping and as seen above. Although it look similar, but female has purchased less amount than male when hovering on the pie you can see that male purchased quantity is 2 times the purchase quantity of female</h4>
+        </div>
+        <div class="col-12 col-md-6 vis-div">
+            <h2 style="font-family: 'Quicksand', sans-serif;">Revenue earned by states</h2>
+            <div id="vis5"></div>
+            <h4 style="font-family: 'Quicksand', sans-serif;">The above plot is a scatter plot used to display the total amount of money earned by each state from shopping </h4>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var vis1 = "vis1.json";
+    vegaEmbed('#vis1', vis1).then(result => console.log(result))
+        .catch(console.warn);
+    var vis2 = "vis2.json";
+    vegaEmbed('#vis2', vis2).then(result => console.log(result))
+        .catch(console.warn);
+    var vis3 = "vis3.json";
+    vegaEmbed('#vis3', vis3).then(result => console.log(result))
+        .catch(console.warn);
+    var vis4 = "vis4.json";
+    vegaEmbed('#vis4', vis4).then(result => console.log(result))
+        .catch(console.warn);
+    var vis5 = "vis5.json";
+    vegaEmbed('#vis5', vis5).then(result => console.log(result))
+        .catch(console.warn);
+</script>
+</body>
+
+</html>

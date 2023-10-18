@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Most revenue earned by location"},
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/SokinaHo/data-vis-assignment2/main/shopping_trends_updated.csv"
+  },
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Total Purchase Amount", "type": "quantitative", "title": "Total Purchase Amount (USD)"},
+    "y": {"field": "Location", "type": "nominal", "title": "Location"},
+    "color": {"field": "Location", "type": "nominal"},
+    "tooltip": [
+      {"field": "Location", "type": "nominal", "title": "Location"},
+      {"field": "Total Purchase Amount", "type": "quantitative", "title": "Total Purchase Amount (USD)"}
+    ]
+  },
+  "transform": [
+    {
+      "aggregate": [{"op": "sum", "field": "Purchase Amount (USD)", "as": "Total Purchase Amount"}],
+      "groupby": ["Location"]
+    }
+  ]
+}

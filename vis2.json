@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Popular product among customers"},
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/SokinaHo/data-vis-assignment2/main/shopping_trends_updated.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "count", "as": "Count"}
+      ],
+      "groupby": ["Item Purchased"]
+    },
+    {
+      "window": [{"op": "rank", "as": "Rank"}],
+      "sort": [{"field": "Count", "order": "descending"}]
+    },
+    {
+      "calculate": "datum.Count + ' purchases'",
+      "as": "tooltip"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Item Purchased", "type": "nominal", "title": "Product Category", "sort": "-y"},
+    "y": {"field": "Count", "type": "quantitative", "title": "Count"},
+    "tooltip": {"field": "tooltip", "type": "nominal"}
+  }
+}
